@@ -106,3 +106,8 @@ htmlcov
 
 #Dynamic Library
 *.dylib
+
+nndc/
+nndc_hdf5/
+endfb71.tar.xz
+endfb71/

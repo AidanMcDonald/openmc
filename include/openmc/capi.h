@@ -1,6 +1,7 @@
 #ifndef OPENMC_CAPI_H
 #define OPENMC_CAPI_H
 
+#include <Python.h>
 #include <stdint.h>
 #include <stdbool.h>
 #include <stddef.h>
@@ -9,6 +10,8 @@
 extern "C" {
 #endif
 
+  void refresh_xml();
+  PyObject* openmc_run_with_errorcheck();
   int openmc_calculate_volumes();
   int openmc_cell_filter_get_bins(int32_t index, const int32_t** cells, int32_t* n);
   int openmc_cell_get_fill(int32_t index, int* type, int32_t** indices, int32_t* n);

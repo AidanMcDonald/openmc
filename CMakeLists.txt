@@ -192,6 +192,7 @@ target_compile_options(faddeeva PRIVATE ${cxxflags})
 #===============================================================================
 
 list(APPEND libopenmc_SOURCES
+  src/extraAPI.cpp
   src/bank.cpp
   src/bremsstrahlung.cpp
   src/dagmc.cpp
@@ -331,6 +332,10 @@ if(dagmc)
   target_link_libraries(libopenmc ${DAGMC_LIBRARIES})
   target_include_directories(libopenmc PRIVATE ${DAGMC_INCLUDE_DIRS})
 endif()
+
+find_package(PythonLibs REQUIRED)
+include_directories(${PYTHON_INCLUDE_DIRS})
+target_link_libraries(libopenmc ${PYTHON_LIBRARIES})
 
 #===============================================================================
 # openmc executable
