@@ -11,6 +11,9 @@
 #include <iomanip> // for setw
 #include <iostream>
 
+#include <signal.h>
+#include <unistd.h>
+
 //==============================================================================
 // Global variables / constants
 //==============================================================================
@@ -108,6 +111,7 @@ void write_message(const std::string& message, int level)
 
 void fatal_error(const std::string& message, int err)
 {
+  kill(getppid(), SIGCONT);
 #ifdef _POSIX_VERSION
   // Make output red if user is in a terminal
   if (isatty(STDERR_FILENO)) {
