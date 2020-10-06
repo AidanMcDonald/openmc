@@ -111,7 +111,7 @@ void write_message(const std::string& message, int level)
 
 void fatal_error(const std::string& message, int err)
 {
-  kill(getppid(), SIGCONT);
+  kill(getppid(), SIGUSR1);
 #ifdef _POSIX_VERSION
   // Make output red if user is in a terminal
   if (isatty(STDERR_FILENO)) {
